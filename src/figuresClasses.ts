@@ -22,7 +22,9 @@ export class Triangle implements Figure {
       throw new Error('all sides of a triangle should be greater than 0');
     }
 
-    if (a >= b + c || b >= a + c || c >= b + a) {
+    const sortedSides = [a, b, c].toSorted((first, second) => first - second);
+
+    if (sortedSides[2] >= sortedSides[0] + sortedSides[1]) {
       throw new Error(
         'the longest side of a triangle should be' +
           ' greater or equal than a sum of two others',
